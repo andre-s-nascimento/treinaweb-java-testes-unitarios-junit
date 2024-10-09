@@ -1,6 +1,6 @@
-package br.com.treinaweb.twbiblioteca.models;
+package dev.andrenascimento.biblioteca.models;
 
-import br.com.treinaweb.twbiblioteca.enums.Tipo;
+import dev.andrenascimento.biblioteca.enums.Tipo;
 
 public class Obra {
 

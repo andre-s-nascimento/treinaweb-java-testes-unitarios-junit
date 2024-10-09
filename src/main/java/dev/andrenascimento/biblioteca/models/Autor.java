@@ -1,4 +1,4 @@
-package br.com.treinaweb.twbiblioteca.models;
+package dev.andrenascimento.biblioteca.models;
 
 import java.time.LocalDate;
 

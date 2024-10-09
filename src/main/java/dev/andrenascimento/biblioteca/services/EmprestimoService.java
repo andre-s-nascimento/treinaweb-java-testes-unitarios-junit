@@ -1,11 +1,11 @@
-package br.com.treinaweb.twbiblioteca.services;
+package dev.andrenascimento.biblioteca.services;
 
 import java.time.LocalDate;
 import java.util.List;
 
-import br.com.treinaweb.twbiblioteca.models.Cliente;
-import br.com.treinaweb.twbiblioteca.models.Emprestimo;
-import br.com.treinaweb.twbiblioteca.models.Obra;
+import dev.andrenascimento.biblioteca.models.Cliente;
+import dev.andrenascimento.biblioteca.models.Emprestimo;
+import dev.andrenascimento.biblioteca.models.Obra;
 
 public class EmprestimoService {
 

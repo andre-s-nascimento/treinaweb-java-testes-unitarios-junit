@@ -1,4 +1,4 @@
-package br.com.treinaweb.twbiblioteca.enums;
+package dev.andrenascimento.biblioteca.enums;
 
 public enum Reputacao {
     RUIM {

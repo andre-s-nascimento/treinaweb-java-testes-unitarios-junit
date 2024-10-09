@@ -1,8 +1,8 @@
-package br.com.treinaweb.twbiblioteca.models;
+package dev.andrenascimento.biblioteca.models;
 
 import java.time.LocalDate;
 
-import br.com.treinaweb.twbiblioteca.enums.Reputacao;
+import dev.andrenascimento.biblioteca.enums.Reputacao;
 
 public class Cliente extends Pessoa {
 

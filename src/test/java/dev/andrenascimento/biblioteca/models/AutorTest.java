@@ -1,10 +1,11 @@
-package br.com.treinaweb.twbiblioteca.models;
+package dev.andrenascimento.biblioteca.models;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
+
 
 public class AutorTest {
 
