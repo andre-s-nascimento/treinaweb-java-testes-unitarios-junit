@@ -1,4 +1,4 @@
-package dev.andrenascimento;
+package dev.andrenascimento.biblioteca;
 
 public class App
 {
