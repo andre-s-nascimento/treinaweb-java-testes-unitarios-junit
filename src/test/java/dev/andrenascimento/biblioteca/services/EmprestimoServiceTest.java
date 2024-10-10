@@ -2,28 +2,37 @@ package dev.andrenascimento.biblioteca.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import dev.andrenascimento.biblioteca.builders.ClienteBuilder;
+import dev.andrenascimento.biblioteca.builders.EmprestimoBuilder;
 import dev.andrenascimento.biblioteca.builders.ObraBuilder;
+import dev.andrenascimento.biblioteca.dao.EmprestimoDAO;
 import dev.andrenascimento.biblioteca.enums.Reputacao;
 import dev.andrenascimento.biblioteca.models.Obra;
 
+@ExtendWith(MockitoExtension.class)
 public class EmprestimoServiceTest {
 
+    @Mock
+    private EmprestimoDAO emprestimoDAO;
+
+    @InjectMocks
     private EmprestimoService emprestimoService;
 
-    // Antes de cada teste
-    @BeforeEach
-    void setUp() {
-        emprestimoService = new EmprestimoService();
-    }
+    @Mock
+    private NotificacaoService notificacaoService;
 
     @Test
     void quandoMetodoNovoForChamadoDeveRetornarUmEmprestimo() {
@@ -118,5 +127,21 @@ public class EmprestimoServiceTest {
 
         // verificação
         assertEquals(mensagemEsperada, exception.getMessage());
+    }
+
+    @Test
+    void quandoMetodoNotificarAtrasoForChamadoDeveRetornarONumeroDeNotificacoes() {
+        // cenário
+
+        var emprestimos = List.of(
+                EmprestimoBuilder.builder().build(),
+                EmprestimoBuilder.builder().dataDevolucao(LocalDate.now().minusDays(1)).build());
+        when(emprestimoDAO.buscarTodos()).thenReturn(emprestimos);
+
+        // execução
+        emprestimoService.notificarAtrasos();
+
+        // verificação
+        verify(notificacaoService).notificar(emprestimos.get(1));
     }
 }
