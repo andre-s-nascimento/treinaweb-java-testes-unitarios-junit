@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 
 import dev.andrenascimento.biblioteca.enums.Reputacao;
 import dev.andrenascimento.biblioteca.enums.Tipo;
@@ -16,6 +20,30 @@ import dev.andrenascimento.biblioteca.models.Cliente;
 import dev.andrenascimento.biblioteca.models.Obra;
 
 public class EmprestimoServiceTest {
+
+    //private EmprestimoService emprestimoService;
+
+    //Antes de cada teste
+    @BeforeEach
+    void antesDeCadaMetodo(){
+        System.out.println("Antes do método");
+    }
+    //Depois de cada teste
+    @AfterEach
+    void depoisDeCadaMetodo(){
+        System.out.println("Depois do método");
+    }
+    //Antes dos testes
+    @BeforeAll
+    static void antesDaClasse(){
+        System.out.println("Antes da classe");
+    }
+    //Depois dos testes
+    @AfterAll
+    static void depoisDaClasse(){
+        System.out.println("Depois da classe");
+    }
+
     @Test
     void quandoMetodoNovoForChamadoDeveRetornarUmEmprestimo() {
         // cenário
