@@ -8,9 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
 import dev.andrenascimento.biblioteca.enums.Reputacao;
@@ -21,33 +18,17 @@ import dev.andrenascimento.biblioteca.models.Obra;
 
 public class EmprestimoServiceTest {
 
-    //private EmprestimoService emprestimoService;
+    private EmprestimoService emprestimoService;
 
     //Antes de cada teste
     @BeforeEach
-    void antesDeCadaMetodo(){
-        System.out.println("Antes do método");
-    }
-    //Depois de cada teste
-    @AfterEach
-    void depoisDeCadaMetodo(){
-        System.out.println("Depois do método");
-    }
-    //Antes dos testes
-    @BeforeAll
-    static void antesDaClasse(){
-        System.out.println("Antes da classe");
-    }
-    //Depois dos testes
-    @AfterAll
-    static void depoisDaClasse(){
-        System.out.println("Depois da classe");
+    void setUp(){
+        emprestimoService = new EmprestimoService();
     }
 
     @Test
     void quandoMetodoNovoForChamadoDeveRetornarUmEmprestimo() {
-        // cenário
-        var emprestimoService = new EmprestimoService();
+        // cenário     
         var cliente = new Cliente(1L, "Cliente Teste", LocalDate.now(), "123.123.123-12", Reputacao.REGULAR);
         var autor = new Autor(1l, "Autor Teste", LocalDate.now(), null);
         var obra = new Obra(1L, "Obra Teste", 100, Tipo.LIVRO, autor);
@@ -65,7 +46,6 @@ public class EmprestimoServiceTest {
     @Test
     void quandoMetodoNovoForChamadoComClienteDeReputacaoRuimDeveRetornarUmEmprestimoComDevolucaoParaUmDias() {
         // cenário
-        var emprestimoService = new EmprestimoService();
         var cliente = new Cliente(1L, "Cliente Teste", LocalDate.now(), "123.123.123-12", Reputacao.RUIM);
         var autor = new Autor(1l, "Autor Teste", LocalDate.now(), null);
         var obra = new Obra(1L, "Obra Teste", 100, Tipo.LIVRO, autor);
@@ -80,7 +60,6 @@ public class EmprestimoServiceTest {
     @Test
     void quandoMetodoNovoForChamadoComClienteDeReputacaoRegularDeveRetornarUmEmprestimoComDevolucaoParaTresDias() {
         // cenário
-        var emprestimoService = new EmprestimoService();
         var cliente = new Cliente(1L, "Cliente Teste", LocalDate.now(), "123.123.123-12", Reputacao.REGULAR);
         var autor = new Autor(1l, "Autor Teste", LocalDate.now(), null);
         var obra = new Obra(1L, "Obra Teste", 100, Tipo.LIVRO, autor);
@@ -95,7 +74,6 @@ public class EmprestimoServiceTest {
     @Test
     void quandoMetodoNovoForChamadoComClienteDeReputacaoBoaDeveRetornarUmEmprestimoComDevolucaoParaCincoDias() {
         // cenário
-        var emprestimoService = new EmprestimoService();
         var cliente = new Cliente(1L, "Cliente Teste", LocalDate.now(), "123.123.123-12", Reputacao.BOA);
         var autor = new Autor(1l, "Autor Teste", LocalDate.now(), null);
         var obra = new Obra(1L, "Obra Teste", 100, Tipo.LIVRO, autor);
@@ -110,7 +88,6 @@ public class EmprestimoServiceTest {
     @Test
     void quandoMetodoNovoForChamadoComObraNulaDeveLancarUmaExcecaoDoTipoIllegalArgumentException() {
         // cenário
-        var emprestimoService = new EmprestimoService();
         var cliente = new Cliente(1L, "Cliente Teste", LocalDate.now(), "123.123.123-12", Reputacao.REGULAR);
         var mensagemEsperada = "Obras não podem ser nulas e nem vazias";
 
@@ -124,7 +101,6 @@ public class EmprestimoServiceTest {
     @Test
     void quandoMetodoNovoForChamadoComObraVaziaDeveLancarUmaExcecaoDoTipoIllegalArgumentException() {
         // cenário
-        var emprestimoService = new EmprestimoService();
         var cliente = new Cliente(1L, "Cliente Teste", LocalDate.now(), "123.123.123-12", Reputacao.REGULAR);
         var obras = new ArrayList<Obra>();
         var mensagemEsperada = "Obras não podem ser nulas e nem vazias";
@@ -139,7 +115,6 @@ public class EmprestimoServiceTest {
     @Test
     void quandoMetodoNovoForChamadoComClienteNuloDeveLancarUmaExcecaoDoTipoIllegalArgumentException() {
         // cenário
-        var emprestimoService = new EmprestimoService();
         var autor = new Autor(1l, "Autor Teste", LocalDate.now(), null);
         var obra = new Obra(1L, "Obra Teste", 100, Tipo.LIVRO, autor);
         var mensagemEsperada = "Cliente não pode ser nulo";
